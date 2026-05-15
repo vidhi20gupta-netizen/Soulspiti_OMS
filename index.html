@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoulSpiti OMS — Vidhi Gupta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F8F7F4;
+    --warm-gray: #F1EFE8;
+    --border: #E3E1D8;
+    --border-dark: #C8C5BA;
+    --text: #1A1917;
+    --text-secondary: #5A5855;
+    --text-muted: #8A8783;
+    --accent: #1D9E75;
+    --accent-light: #E1F5EE;
+    --accent-mid: #5DCAA5;
+    --danger: #D85A30;
+    --danger-light: #FAECE7;
+    --warning: #BA7517;
+    --warning-light: #FAEEDA;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0 64px;
+  }
+
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.12;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    margin-bottom: 36px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-meta-item .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hero-meta-item .value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* METRICS STRIP */
+  .metrics-strip {
+    background: var(--text);
+    padding: 40px 0;
+  }
+
+  .metrics-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .metric-item {
+    padding: 0 24px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    text-align: center;
+  }
+
+  .metric-item:first-child { padding-left: 0; }
+  .metric-item:last-child { border-right: none; padding-right: 0; }
+
+  .metric-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--accent-mid);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 64px 0 0;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .section-body p + p {
+    margin-top: 14px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 64px 0 0;
+  }
+
+  /* CALLOUT */
+  .callout {
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+
+  .callout.danger {
+    background: var(--danger-light);
+    border-left: 3px solid var(--danger);
+  }
+
+  .callout.accent {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+  }
+
+  .callout.purple {
+    background: var(--purple-light);
+    border-left: 3px solid var(--purple);
+  }
+
+  .callout.warning {
+    background: var(--warning-light);
+    border-left: 3px solid var(--warning);
+  }
+
+  .callout-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .callout.danger .callout-label { color: var(--danger); }
+  .callout.accent .callout-label { color: var(--accent); }
+  .callout.purple .callout-label { color: var(--purple); }
+  .callout.warning .callout-label { color: var(--warning); }
+
+  .callout-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  /* BEFORE/AFTER */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .compare-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .compare-card.before { border-top: 3px solid var(--danger); }
+  .compare-card.after  { border-top: 3px solid var(--accent); }
+
+  .compare-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .compare-card.before .compare-card-title { color: var(--danger); }
+  .compare-card.after .compare-card-title { color: var(--accent); }
+
+  .compare-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    gap: 12px;
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+
+  .compare-row-label {
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .compare-row-value {
+    font-weight: 500;
+    color: var(--text);
+    text-align: right;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    margin: 32px 0;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border-dark);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--border-dark);
+  }
+
+  .timeline-item.milestone::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    width: 10px;
+    height: 10px;
+    left: -25px;
+    top: 5px;
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* WHATSAPP MOCKUP */
+  .whatsapp-wrap {
+    background: var(--warm-gray);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin: 24px 0;
+    border: 1px solid var(--border);
+  }
+
+  .whatsapp-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .whatsapp-bubble {
+    background: var(--white);
+    border-radius: 0 12px 12px 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    max-width: 320px;
+    border: 1px solid var(--border);
+    white-space: pre-line;
+    font-family: monospace;
+    font-size: 13px;
+  }
+
+  .whatsapp-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: 6px;
+  }
+
+  /* ROUTING FLOW */
+  .flow-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin: 28px 0;
+  }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .flow-step:last-child { border-bottom: none; }
+
+  .flow-step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--warm-gray);
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .flow-step-num.highlight {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+  }
+
+  .flow-step-content {}
+
+  .flow-step-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .flow-step-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* DASHBOARD GRID */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+
+  .dashboard-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+  }
+
+  .dashboard-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .artisan-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .artisan-row:last-child { border-bottom: none; }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .dot-green { background: #1D9E75; }
+  .dot-yellow { background: #EF9F27; }
+  .dot-red { background: #E24B4A; }
+
+  .kanban-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kanban-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .kanban-card {
+    background: var(--warm-gray);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  .inventory-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .inventory-row:last-child { border-bottom: none; }
+
+  .inventory-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    margin-top: 4px;
+    overflow: hidden;
+  }
+
+  .inventory-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  /* LEARNING CARDS */
+  .learning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 28px 0;
+  }
+
+  .learning-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+
+  .learning-card-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .learning-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .learning-card-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* STACK TABLE */
+  .stack-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .stack-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--warm-gray);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stack-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .stack-table tr:last-child td { border-bottom: none; }
+
+  .stack-table .highlight-row td {
+    background: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* ROI BANNER */
+  .roi-banner {
+    background: var(--text);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin: 28px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .roi-item {}
+
+  .roi-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--accent-mid);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .roi-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    margin: 36px 0;
+    padding: 28px 32px;
+    border-left: 3px solid var(--text);
+    background: var(--white);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.4;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* PILL BADGES */
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .pill-green { background: var(--accent-light); color: #0F6E56; }
+  .pill-red { background: var(--danger-light); color: var(--danger); }
+
+  /* FOOTER */
+  .footer {
+    margin: 80px 0 0;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .footer-role {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* NOTION EMBED HINT */
+  .notion-hint {
+    background: var(--blue-light);
+    border: 1px solid #B5D4F4;
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--blue);
+    margin: 28px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 36px; }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .metric-item { border-right: none; padding: 0; }
+    .compare-grid, .learning-grid { grid-template-columns: 1fr; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .roi-banner { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="tag">Operations · Systems Design · No-Code</div>
+    <h1>Building the system<br>that <em>replaced</em> me</h1>
+    <p class="hero-subtitle">How I designed and shipped an automated operations management system for SoulSpiti — taking founder coordination from 40 hours/week to 2, while 4x-ing order volume.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Project</span>
+        <span class="value">SoulSpiti OMS</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Timeline</span>
+        <span class="value">Jan 2024 – Apr 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Product Manager</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Stack</span>
+        <span class="value">Make.com · Airtable · WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS STRIP -->
+<section class="metrics-strip">
+  <div class="metrics-inner">
+    <div class="metric-item">
+      <div class="metric-num">4×</div>
+      <div class="metric-label">order volume growth</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">−95%</div>
+      <div class="metric-label">coordination time</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">94%</div>
+      <div class="metric-label">auto-routing rate</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">50×</div>
+      <div class="metric-label">first-year ROI</div>
+    </div>
+  </div>
+</section>
+
+<div class="main">
+
+  <!-- CONTEXT -->
+  <section class="section">
+    <div class="section-tag">Context</div>
+    <h2 class="section-title">A craft business hitting an invisible ceiling</h2>
+    <div class="section-body">
+      <p>SoulSpiti makes handcrafted wood furniture — sheesham coffee tables, walnut dining sets — coordinated through a network of independent artisans in Rajasthan. In January 2024, the business was running on founder Avantika's WhatsApp messages, Google Sheets, and intuition. It was working. Until it wasn't.</p>
+      <p>At 100 orders/month, the system began to fracture. Not gradually — violently.</p>
+    </div>
+
+    <div class="callout danger">
+      <div class="callout-label">The breaking point · Valentine's Day 2024</div>
+      <div class="callout-text">Avantika sent 8 orders via WhatsApp to Ramesh: <em>"8 tables for Valentine's — can you do?"</em> He replied <strong>हाँ</strong>. He thought: 1 order, 8 tables. She meant: 8 separate customer orders. He made 2 tables and considered himself done. Six customers received nothing. ₹86,000 lost. Viral complaints followed.<br><br>Root cause wasn't Ramesh. It was a system built for one that was being asked to serve thousands.</div>
+    </div>
+
+    <div class="section-body">
+      <p>This is the moment the project started — not from a product roadmap or OKR, but from a real failure with real financial and reputational cost.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BEFORE/AFTER -->
+  <section class="section">
+    <div class="section-tag">Baseline vs Outcome</div>
+    <h2 class="section-title">Where we started, where we ended</h2>
+
+    <div class="compare-grid">
+      <div class="compare-card before">
+        <div class="compare-card-title">Before · Jan 2024</div>
+        <div class="compare-row">
+          <span class="compare-row-label">Orders/month</span>
+          <span class="compare-row-value">100</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Delivered</span>
+          <span class="compare-row-value">75 (25% cancel)</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Artisans</span>
+          <span class="compare-row-value">9, via WhatsApp</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Founder hrs/week</span>
+          <span class="compare-row-value">40 hrs</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Complaint rate</span>
+          <span class="compare-row-value">30%</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">System</span>
+          <span class="compare-row-value">Google Sheets, manual</span>
+        </div>
+      </div>
+      <div class="compare-card after">
+        <div class="compare-card-title">After · Apr 2026</div>
+        <div class="compare-row">
+          <span class="compare-row-label">Orders/month</span>
+          <span class="compare-row-value">400</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Delivered</span>
+          <span class="compare-row-value">368 (8% cancel)</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Artisans</span>
+          <span class="compare-row-value">30, automated routing</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Founder hrs/week</span>
+          <span class="compare-row-value">2 hrs</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">Complaint rate</span>
+          <span class="compare-row-value">12.5%</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-row-label">System</span>
+          <span class="compare-row-value">94–96% auto-routing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FIRST FAILURE -->
+  <section class="section">
+    <div class="section-tag">Attempt 1 · Feb 2024</div>
+    <h2 class="section-title">The automation that taught me to do research first</h2>
+    <div class="section-body">
+      <p>The obvious fix was automation. I hired an Upwork developer (₹40K) and built a Twilio WhatsApp bot. It sent orders in English, expected clean replies like <em>"Reply YES"</em>, and had no timeout logic. It went live. And it immediately failed.</p>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-label">Failure analysis · 68% non-response rate</div>
+      <div class="callout-text">
+        Artisans preferred Hindi — they didn't engage with English messages. The rigid reply format rejected <strong>हाँ</strong>, <em>ok</em>, <em>okay</em>. Messages arrived at random hours; artisans only checked their phones during chai breaks (10 AM, 3 PM, 7 PM). No timeout meant missed messages sat unanswered indefinitely.
+        <br><br>Abandoned after 2 weeks. ₹40K wasted. But the real cost was clarity: I had automated a process I didn't understand.
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESEARCH -->
+  <section class="section">
+    <div class="section-tag">User Research · April 2024</div>
+    <h2 class="section-title">Six hours in a workshop in Jodhpur</h2>
+    <div class="section-body">
+      <p>I flew to Jodhpur and sat with Ramesh, Suresh, and Dinesh in their workshops — 6+ hours each. No surveys. No forms. Just watching how they actually worked.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Meet artisans where they are, not where we wish they were."</p>
+      <cite>Design principle, Jodhpur trip</cite>
+    </div>
+
+    <div class="learning-grid">
+      <div class="learning-card">
+        <div class="learning-card-icon">☕</div>
+        <div class="learning-card-title">Chai break pattern</div>
+        <div class="learning-card-text">Artisans check WhatsApp exactly 3 times/day — 10 AM, 3 PM, 7 PM during breaks. Messages outside those windows go unseen for hours.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-icon">💰</div>
+        <div class="learning-card-title">Money-first reading</div>
+        <div class="learning-card-text">First scan: how much do I get paid? If payment isn't visible in the first line, they read for context before deciding. Payment in line 1 = faster decisions.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-icon">✂️</div>
+        <div class="learning-card-title">2-line limit</div>
+        <div class="learning-card-text">Nobody reads more than 2 lines. Anything longer was skipped or handed to someone else. The message has to work in a glance.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-icon">🇮🇳</div>
+        <div class="learning-card-title">Hindi primary</div>
+        <div class="learning-card-text">English messages felt formal and foreign. Hindi was natural. Every acceptance variation — हाँ, ok, okay, haan — needed to be treated as yes.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-icon">📦</div>
+        <div class="learning-card-title">Capacity ceiling</div>
+        <div class="learning-card-text">Max 10–12 orders/month per artisan. Beyond this, quality dropped. Any routing logic had to hardcode this ceiling.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-icon">🪵</div>
+        <div class="learning-card-title">Weekly restocks</div>
+        <div class="learning-card-text">Wood inventory refreshed weekly. Routing had to check material availability, not just artisan availability. These are different states.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHATSAPP V2 -->
+  <section class="section">
+    <div class="section-tag">Solution V2 · Apr–Jun 2024</div>
+    <h2 class="section-title">Rebuilding the message from scratch</h2>
+    <div class="section-body">
+      <p>The new template wasn't just translated to Hindi. It was restructured around how artisans actually read and decide. Payment first. Two lines max. Flexible reply acceptance.</p>
+    </div>
+
+    <div class="whatsapp-wrap">
+      <div class="whatsapp-label">WhatsApp order template · V2</div>
+      <div class="whatsapp-bubble">🪑 नया आर्डर - Sheesham Coffee Table
+
+₹5,500 मिलेंगे:
+• अभी: ₹1,650 (30%)
+• डिलीवरी पर: ₹3,850 (70%)
+
+Deadline: 15 May
+
+हाँ/ना में reply करें</div>
+      <div class="whatsapp-time">Delivered 10:02 AM</div>
+    </div>
+
+    <div class="learning-grid">
+      <div class="learning-card">
+        <div class="learning-card-title">Timeout logic</div>
+        <div class="learning-card-text">Wait 6 hrs → reminder → wait 4 hrs → route to next artisan + alert founder. No more silent black holes.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">Flexible parsing</div>
+        <div class="learning-card-text">Accepted: हाँ, yes, ok, okay, haan, ha, y. Rejected = ना, no, nahi, busy. Any other text → flags to Avantika.</div>
+      </div>
+    </div>
+
+    <div class="callout accent">
+      <div class="callout-label">Results · May–Jun 2024</div>
+      <div class="callout-text">Response rate: 68% → <strong>88%</strong> &nbsp;·&nbsp; Avg response time: 8 hrs → <strong>3.2 hrs</strong> &nbsp;·&nbsp; Acceptance rate: <strong>82%</strong></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- OMS V2 -->
+  <section class="section">
+    <div class="section-tag">OMS V2.0 · Jan–Mar 2025</div>
+    <h2 class="section-title">The system that runs itself</h2>
+    <div class="section-body">
+      <p>In January 2025, I spent 120 hours across 3 weeks learning Make.com and Airtable from scratch — YouTube tutorials, practice automations, integration testing. The decision to go no-code wasn't passive; it was a deliberate trade-off.</p>
+    </div>
+
+    <div class="callout purple">
+      <div class="callout-label">Build vs buy decision</div>
+      <div class="callout-text">Custom dev: ₹3–5L one-time + ₹25K/month, 4+ months, external dependency.<br>No-code: ₹7K/month, 8 weeks, Vidhi owns it entirely.<br><br>Chose no-code. Speed, cost, and ownership all pointed the same direction.</div>
+    </div>
+
+    <div class="flow-wrap">
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num highlight">1</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">New Shopify order triggers Make.com</div>
+            <div class="flow-step-detail">Product type, wood, complexity extracted automatically</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Airtable queries for qualified artisans</div>
+            <div class="flow-step-detail">Filters: has wood skill · workload &lt;10 · inventory &gt;0 · quality score &gt;4.0 · status = Available</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Ranked by fairness + speed + quality</div>
+            <div class="flow-step-detail">Primary: lowest workload · Secondary: fastest delivery · Tertiary: highest quality score</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num highlight">4</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">WhatsApp sent to #1 artisan</div>
+            <div class="flow-step-detail">Hindi template, payment-first, timed to chai breaks (10 AM / 3 PM / 7 PM)</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">5</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">6-hour wait → reminder → 4-hour wait</div>
+            <div class="flow-step-detail">If no response: route to #2 artisan + alert founder</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num highlight">6</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Airtable auto-updates</div>
+            <div class="flow-step-detail">Artisan workload, order status, inventory — all in real time. Dashboard reflects immediately.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout accent">
+      <div class="callout-label">Launch results · March 2025</div>
+      <div class="callout-text">Week 1: 90% success · Week 2: 92% · Week 3: <strong>94% (target achieved)</strong><br>Stable at 94–96% through April 2026. Founder time: 15 hrs/week → <strong>2 hrs/week</strong>.</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DASHBOARDS -->
+  <section class="section">
+    <div class="section-tag">Dashboards · Real-time visibility</div>
+    <h2 class="section-title">Turning data into decisions</h2>
+    <div class="section-body">
+      <p>Three Airtable views, each designed for a specific operational question. Not reports — live controls.</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="dashboard-card-title">Artisan workload</div>
+        <div class="artisan-row">
+          <span><span class="status-dot dot-green"></span>Ramesh</span>
+          <span style="font-size:12px;color:var(--text-muted)">6 orders</span>
+        </div>
+        <div class="artisan-row">
+          <span><span class="status-dot dot-green"></span>Suresh</span>
+          <span style="font-size:12px;color:var(--text-muted)">4 orders</span>
+        </div>
+        <div class="artisan-row">
+          <span><span class="status-dot dot-yellow"></span>Dinesh</span>
+          <span style="font-size:12px;color:var(--text-muted)">9 orders</span>
+        </div>
+        <div class="artisan-row">
+          <span><span class="status-dot dot-red"></span>Mohan</span>
+          <span style="font-size:12px;color:var(--text-muted)">12 orders</span>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">🟢 &lt;8 · 🟡 8–11 · 🔴 12+</div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-card-title">Order pipeline</div>
+        <div class="kanban-col">
+          <div class="kanban-label">In production</div>
+          <div class="kanban-card">#2407 · Coffee table</div>
+          <div class="kanban-card">#2409 · Dining chair ×2</div>
+          <div class="kanban-label" style="margin-top:8px">Ready to ship</div>
+          <div class="kanban-card">#2401 · Bookshelf</div>
+          <div class="kanban-label" style="margin-top:8px">QC pending</div>
+          <div class="kanban-card">#2405 · Side table</div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-card-title">Inventory heatmap</div>
+        <div class="inventory-row">
+          <span style="color:var(--text-secondary)">Sheesham</span>
+          <span style="font-size:11px;color:var(--accent)">High</span>
+        </div>
+        <div class="inventory-bar"><div class="inventory-fill" style="width:80%;background:var(--accent)"></div></div>
+        <div class="inventory-row" style="margin-top:8px">
+          <span style="color:var(--text-secondary)">Walnut</span>
+          <span style="font-size:11px;color:var(--warning)">Medium</span>
+        </div>
+        <div class="inventory-bar"><div class="inventory-fill" style="width:45%;background:var(--warning)"></div></div>
+        <div class="inventory-row" style="margin-top:8px">
+          <span style="color:var(--text-secondary)">Mango</span>
+          <span style="font-size:11px;color:var(--danger)">Low</span>
+        </div>
+        <div class="inventory-bar"><div class="inventory-fill" style="width:15%;background:var(--danger)"></div></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:8px">Restocked weekly</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHOTO QC -->
+  <section class="section">
+    <div class="section-tag">Photo QC · Jun 2025</div>
+    <h2 class="section-title">Catching issues before they ship</h2>
+    <div class="section-body">
+      <p>With routing automated, the next constraint was quality. At 16–17% complaint rate, defects were being discovered after delivery — unreturnable, unrepairable, already viral on Instagram. I needed a quality gate before the order left the workshop.</p>
+    </div>
+
+    <div class="flow-wrap">
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Artisan marks "Packed" in Airtable</div>
+            <div class="flow-step-detail">Status change triggers the QC workflow automatically</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Auto-WhatsApp: "Send 3 photos"</div>
+            <div class="flow-step-detail">Front view, back view, packaging — specific angles reduce ambiguity</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Photos → Cloudinary → Slack alert</div>
+            <div class="flow-step-detail">Avantika or Vidhi receive a notification with images linked inline</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num highlight">4</div>
+          <div class="flow-step-content">
+            <div class="flow-step-title">Review within 6 hours</div>
+            <div class="flow-step-detail">Approve → ship. Reject → artisan fixes + resubmits. No shipping without approval.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout accent">
+      <div class="callout-label">Results · Jun 2025</div>
+      <div class="callout-text">Compliance: <strong>92%</strong> · Issues caught pre-dispatch: <strong>13–15%</strong> · Complaint rate: 16% → <strong>12.5%</strong></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TECH STACK -->
+  <section class="section">
+    <div class="section-tag">Technology</div>
+    <h2 class="section-title">₹7,800/month, fully owned</h2>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Role</th>
+          <th>Cost/month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Make.com Pro</strong></td>
+          <td>Automation engine — routing, timeouts, triggers</td>
+          <td>₹2,000</td>
+        </tr>
+        <tr>
+          <td><strong>Airtable Pro</strong></td>
+          <td>Database, dashboards, artisan management</td>
+          <td>₹1,500</td>
+        </tr>
+        <tr>
+          <td><strong>Interakt</strong></td>
+          <td>WhatsApp Business API, Hindi templates</td>
+          <td>₹3,500</td>
+        </tr>
+        <tr>
+          <td><strong>Cloudinary</strong></td>
+          <td>Photo storage for QC workflow</td>
+          <td>₹800</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>Total</strong></td>
+          <td>vs ₹3–5L upfront + ₹25K/month custom dev</td>
+          <td><strong>₹7,800</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ROI -->
+  <section class="section">
+    <div class="section-tag">Return on Investment</div>
+    <h2 class="section-title">The numbers that made the case</h2>
+
+    <div class="roi-banner">
+      <div class="roi-item">
+        <div class="roi-num">₹1.65L</div>
+        <div class="roi-label">Total investment (15 months ₹7.8K + ₹60K learning time)</div>
+      </div>
+      <div class="roi-item">
+        <div class="roi-num">₹17.8L</div>
+        <div class="roi-label">Annual time savings (Avantika 38 hrs/week at ₹90K salary)</div>
+      </div>
+      <div class="roi-item">
+        <div class="roi-num">₹95L</div>
+        <div class="roi-label">Revenue saved from 17% cancellation reduction × 400 orders × ₹14K avg</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <div class="section-tag">Timeline</div>
+    <h2 class="section-title">27 months of iteration</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2024</div>
+        <div class="timeline-title">Baseline — manual chaos</div>
+        <div class="timeline-desc">100 orders/month, 9 artisans, 40 hrs/week founder coordination via Google Sheets + WhatsApp</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Feb 2024</div>
+        <div class="timeline-title">Valentine's crisis + first automation (failed)</div>
+        <div class="timeline-desc">₹86K lost in miscommunication. English-only Twilio bot abandoned at 68% non-response rate. ₹40K dev cost written off.</div>
+      </div>
+      <div class="timeline-item milestone">
+        <div class="timeline-date">Apr 2024</div>
+        <div class="timeline-title">Jodhpur research trip</div>
+        <div class="timeline-desc">6 hrs each with 3 artisans. Discovered chai break timing, payment-first reading, 2-line limit, Hindi preference.</div>
+      </div>
+      <div class="timeline-item milestone">
+        <div class="timeline-date">Jun 2024</div>
+        <div class="timeline-title">WhatsApp V2 launches</div>
+        <div class="timeline-desc">Hindi-first, payment-first template with timeout logic. Response rate: 68% → 88%. Avg response time: 8 hrs → 3.2 hrs.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sep 2024</div>
+        <div class="timeline-title">Daily updates automation</div>
+        <div class="timeline-desc">6 PM progress check via WhatsApp. Customer complaints: 15/month → 6/month (-60%). Chase time: 3 hrs/day → 45 min.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2025</div>
+        <div class="timeline-title">120 hours learning no-code</div>
+        <div class="timeline-desc">Make.com + Airtable fundamentals. Rejected ₹3–5L custom dev quote. Chose speed, cost, and ownership.</div>
+      </div>
+      <div class="timeline-item milestone">
+        <div class="timeline-date">Mar 2025</div>
+        <div class="timeline-title">OMS V2.0 goes live</div>
+        <div class="timeline-desc">Smart routing: Shopify → Make.com → Airtable → WhatsApp. 94% auto-routing achieved in week 3. Founder time: 15 hrs → 2 hrs/week.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jun 2025</div>
+        <div class="timeline-title">Photo QC workflow</div>
+        <div class="timeline-desc">Pre-dispatch photo approval via Cloudinary + Slack. Caught 13–15% of issues before shipping. Complaint rate → 12.5%.</div>
+      </div>
+      <div class="timeline-item milestone">
+        <div class="timeline-date">Apr 2026</div>
+        <div class="timeline-title">Scale achieved</div>
+        <div class="timeline-desc">400 orders/month, 30 artisans, 2 hrs/week founder time. System stable at 94–96% auto-routing for 13 consecutive months.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LEARNINGS -->
+  <section class="section">
+    <div class="section-tag">What I learned</div>
+    <h2 class="section-title">The non-obvious lessons</h2>
+
+    <div class="learning-grid">
+      <div class="learning-card">
+        <div class="learning-card-title">Research before automation, always</div>
+        <div class="learning-card-text">The first bot failed because I automated my assumptions. The Jodhpur trip cost 3 days and changed everything. There is no substitute for watching users work.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">94% is the right target</div>
+        <div class="learning-card-text">Chasing 100% auto-routing would have made the system brittle. The 6% human override handles edge cases that no rule can anticipate. Hybrid &gt; perfect automation.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">Ownership beats customisation</div>
+        <div class="learning-card-text">A system I can debug at 11 PM on a Saturday is worth more than a more powerful one I depend on a developer to touch. No-code was the right call.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">Progress bars reduce complaints</div>
+        <div class="learning-card-text">Customers don't complain about slow — they complain about silent. The daily 6 PM update dropped complaints 60%, without changing actual delivery speed at all.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">Dashboards &gt; alerts</div>
+        <div class="learning-card-text">Notifications create anxiety. Real-time dashboards create control. Avantika's role shifted from firefighter to decision-maker because she could see the state of every order at any time.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-card-title">Roll out to 3 before 30</div>
+        <div class="learning-card-text">Progressive rollout: 3 artisans → 7 → 14 → 30. Each stage revealed failure modes that would have been catastrophic at full scale. Slowness was the safety feature.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT I'D DO NEXT -->
+  <section class="section">
+    <div class="section-tag">What I'd validate next</div>
+    <h2 class="section-title">The questions still open</h2>
+    <div class="section-body">
+      <p>The system is stable. These are the questions that would drive the next phase of work.</p>
+      <p><strong>1. Can routing quality improve further?</strong> The 6% failure rate clusters in specific order types — high-complexity pieces and non-standard wood combinations. A more granular skill taxonomy might push routing above 96%.</p>
+      <p><strong>2. What's the complaint composition at 12.5%?</strong> We know the rate but not the breakdown. A 2-week tagging exercise on incoming complaints would tell us whether photo QC, routing, or artisan skill is the remaining constraint.</p>
+      <p><strong>3. Can artisans self-report inventory?</strong> Currently, inventory is manually updated weekly. If artisans could update stock directly via WhatsApp reply, the data would be more accurate and the workflow lighter.</p>
+      <p><strong>4. What breaks at 600 orders/month?</strong> The system was designed for the current load. Before pushing growth, I'd stress-test the Make.com scenarios for high-concurrency edge cases.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">Vidhi Gupta</div>
+    <div class="footer-role">Product Manager · SoulSpiti OMS · 2024–2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
